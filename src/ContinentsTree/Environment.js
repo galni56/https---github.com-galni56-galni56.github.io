@@ -1,24 +1,20 @@
 import React from 'react';
-import collapsingList from '../hoc/collapsingList';
+
+import EnvironmentItem from './EnvironmentItem';
 
 const Environment = (props) => {
     
-    const { data, onClick, isShow }  = props;
-    let world = data.continents || data.countries || data.languages || [] ; 
-    
-    console.log(world)
+    const { data } = props;
+    let list = data.continents || data.countries || data.languages || []; 
     
     return (
-        world.map((item, i) => {
+        list.map((item, i) => {
             return (
-                <div className={item.__typename} key={item.code + i}>
-                    <p onClick={onClick} className={item.__typename} >{ item.name }</p>
-                    { isShow ? <Environment data={item}/> : null }
-                </div>
+                <EnvironmentItem item={item} key={i} />
             )
         })
     )
 }
 
 
-export default collapsingList(Environment);
+export default Environment;
