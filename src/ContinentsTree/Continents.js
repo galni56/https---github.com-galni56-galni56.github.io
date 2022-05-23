@@ -32,7 +32,7 @@ const LIST_CONTINENTS = gql`
 function ContinentsSelect() {
   const { data, loading, error } = useQuery(LIST_CONTINENTS, { client });
 
-  if (loading || error) {
+  if (loading) {
     return <p className='error'>{error ? error.message : 'Loading...'}</p>;
   }
 
